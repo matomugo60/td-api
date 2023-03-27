@@ -29,4 +29,4 @@ class Calculator
         @n1 * @n1 * @n1
     end
 
-endcd
+end

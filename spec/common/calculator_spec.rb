@@ -26,3 +26,4 @@ RSpec.describe "Calculator functionality" do
     end
 
 end
+

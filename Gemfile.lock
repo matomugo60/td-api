@@ -184,7 +184,7 @@ DEPENDENCIES
   jwt
   puma (~> 5.0)
   rails (~> 7.0.4, >= 7.0.4.3)
-  rspec-rails
+  rspec-rails (~> 6.0.0)
   sqlite3 (~> 1.4)
   tzinfo-data
 

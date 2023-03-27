@@ -16,4 +16,5 @@ Rails.application.routes.draw do
 
   # verify auth
   get '/verify', to: 'application#verify_auth'
+
 end

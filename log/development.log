@@ -1,0 +1,218 @@
+  [1m[35m (114.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (113.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20230322080200)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar NOT NULL, "email" varchar NOT NULL, "password_digest" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230322080200"]]
+  [1m[36mTRANSACTION (113.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-03-22 08:22:43.756158"], ["updated_at", "2023-03-22 08:22:43.756158"]]
+  [1m[36mTRANSACTION (77.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/users%0A%0A" for ::1 at 2023-03-22 11:36:13 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [POST] "/users%0A%0A"):
+  
+Started POST "/users%0A%0A" for ::1 at 2023-03-22 11:37:50 +0300
+  
+ActionController::RoutingError (No route matches [POST] "/users%0A%0A"):
+  
+Started POST "/users" for 127.0.0.1 at 2023-03-22 11:38:25 +0300
+  
+SyntaxError (/home/martin/Moringa/class/Task-Train/api/app/controllers/application_controller.rb:6: syntax error, unexpected local variable or method, expecting '}'
+            data: data
+            ^~~~
+/home/martin/Moringa/class/Task-Train/api/app/controllers/application_controller.rb:7: syntax error, unexpected ':', expecting `end'
+            status: status
+                  ^
+):
+  
+app/controllers/application_controller.rb:6: syntax error, unexpected local variable or method, expecting '}'
+app/controllers/application_controller.rb:7: syntax error, unexpected ':', expecting `end'
+app/controllers/application_controller.rb:6: syntax error, unexpected local variable or method, expecting '}'
+app/controllers/application_controller.rb:7: syntax error, unexpected ':', expecting `end'
+app/controllers/users_controller.rb:1:in `<main>'
+Started POST "/users" for 127.0.0.1 at 2023-03-22 11:39:14 +0300
+Processing by UsersController#register as */*
+  Parameters: {"username"=>"martin", "email"=>"123@gmail.com", "password"=>"[FILTERED]", "user"=>{"username"=>"martin", "email"=>"123@gmail.com"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: register, request: #<ActionDispatch::Request:0x00007f2e281a58a8>, params: {"username"=>"martin", "email"=>"123@gmail.com", "password"=>"[FILTERED]", "controller"=>"users", "action"=>"register", "user"=>{"username"=>"martin", "email"=>"123@gmail.com"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:3:in `register'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "martin"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:3:in `register'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "123@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:3:in `register'
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["username", "martin"], ["email", "123@gmail.com"], ["password_digest", "[FILTERED]"], ["created_at", "2023-03-22 08:39:14.945177"], ["updated_at", "2023-03-22 08:39:14.945177"]]
+  ↳ app/controllers/users_controller.rb:3:in `register'
+  [1m[36mTRANSACTION (74.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:3:in `register'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? AND "users"."id" != ? LIMIT ?[0m  [["username", "martin"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `register'
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? AND "users"."id" != ? LIMIT ?[0m  [["email", "123@gmail.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `register'
+Completed 200 OK in 365ms (Views: 0.3ms | ActiveRecord: 76.4ms | Allocations: 42669)
+
+
+Started POST "/users%0A%0A" for ::1 at 2023-03-22 11:50:00 +0300
+  
+ActionController::RoutingError (No route matches [POST] "/users%0A%0A"):
+  
+Started POST "/users" for 127.0.0.1 at 2023-03-22 11:50:49 +0300
+Processing by UsersController#register as */*
+  Parameters: {"username"=>"victor", "email"=>"456@gmail.com", "password"=>"[FILTERED]", "user"=>{"username"=>"victor", "email"=>"456@gmail.com"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: register, request: #<ActionDispatch::Request:0x00007f2e30a1d4d8>, params: {"username"=>"victor", "email"=>"456@gmail.com", "password"=>"[FILTERED]", "controller"=>"users", "action"=>"register", "user"=>{"username"=>"victor", "email"=>"456@gmail.com"}} }[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:3:in `register'
+  [1m[36mUser Exists? (275.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "victor"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:3:in `register'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "456@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:3:in `register'
+  [1m[36mUser Create (68.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["username", "victor"], ["email", "456@gmail.com"], ["password_digest", "[FILTERED]"], ["created_at", "2023-03-22 08:50:49.641570"], ["updated_at", "2023-03-22 08:50:49.641570"]]
+  ↳ app/controllers/users_controller.rb:3:in `register'
+  [1m[36mTRANSACTION (995.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:3:in `register'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? AND "users"."id" != ? LIMIT ?[0m  [["username", "victor"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `register'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? AND "users"."id" != ? LIMIT ?[0m  [["email", "456@gmail.com"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `register'
+Completed 200 OK in 1615ms (Views: 1.1ms | ActiveRecord: 1341.2ms | Allocations: 4697)
+
+
+Started POST "/users%0A%0A" for ::1 at 2023-03-22 11:51:23 +0300
+  
+ActionController::RoutingError (No route matches [POST] "/users%0A%0A"):
+  
+Started GET "/user/login/check" for 127.0.0.1 at 2023-03-23 10:45:47 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+SyntaxError (/home/martin/Moringa/class/Task-Train/api/app/controllers/users_controller.rb:8: syntax error, unexpected constant, expecting ')'
+        save_user(:id User.id)
+                      ^~~~
+/home/martin/Moringa/class/Task-Train/api/app/controllers/users_controller.rb:8: syntax error, unexpected ')', expecting `end'
+        save_user(:id User.id)
+                             ^
+/home/martin/Moringa/class/Task-Train/api/app/controllers/users_controller.rb:18: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+..., email: user_params[:email] }).first
+...                              ^
+/home/martin/Moringa/class/Task-Train/api/app/controllers/users_controller.rb:20: syntax error, unexpected constant, expecting ')'
+            save_user(:id User.id)
+                          ^~~~
+/home/martin/Moringa/class/Task-Train/api/app/controllers/users_controller.rb:20: syntax error, unexpected ')', expecting `end'
+...         save_user(:id User.id)
+...                              ^
+):
+  
+app/controllers/users_controller.rb:8: syntax error, unexpected constant, expecting ')'
+app/controllers/users_controller.rb:8: syntax error, unexpected ')', expecting `end'
+app/controllers/users_controller.rb:18: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/controllers/users_controller.rb:20: syntax error, unexpected constant, expecting ')'
+app/controllers/users_controller.rb:20: syntax error, unexpected ')', expecting `end'
+app/controllers/users_controller.rb:8: syntax error, unexpected constant, expecting ')'
+app/controllers/users_controller.rb:8: syntax error, unexpected ')', expecting `end'
+app/controllers/users_controller.rb:18: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/controllers/users_controller.rb:20: syntax error, unexpected constant, expecting ')'
+app/controllers/users_controller.rb:20: syntax error, unexpected ')', expecting `end'
+Started GET "/user/login/check" for 127.0.0.1 at 2023-03-23 10:49:34 +0300
+  
+SyntaxError (/home/martin/Moringa/class/Task-Train/api/app/controllers/users_controller.rb:8: syntax error, unexpected constant, expecting ')'
+        save_user(:id User.id)
+                      ^~~~
+/home/martin/Moringa/class/Task-Train/api/app/controllers/users_controller.rb:8: syntax error, unexpected ')', expecting `end'
+        save_user(:id User.id)
+                             ^
+/home/martin/Moringa/class/Task-Train/api/app/controllers/users_controller.rb:18: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+..., email: user_params[:email] }).first
+...                              ^
+/home/martin/Moringa/class/Task-Train/api/app/controllers/users_controller.rb:20: syntax error, unexpected constant, expecting ')'
+            save_user(:id User.id)
+                          ^~~~
+/home/martin/Moringa/class/Task-Train/api/app/controllers/users_controller.rb:20: syntax error, unexpected ')', expecting `end'
+...         save_user(:id User.id)
+...                              ^
+):
+  
+app/controllers/users_controller.rb:8: syntax error, unexpected constant, expecting ')'
+app/controllers/users_controller.rb:8: syntax error, unexpected ')', expecting `end'
+app/controllers/users_controller.rb:18: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/controllers/users_controller.rb:20: syntax error, unexpected constant, expecting ')'
+app/controllers/users_controller.rb:20: syntax error, unexpected ')', expecting `end'
+app/controllers/users_controller.rb:8: syntax error, unexpected constant, expecting ')'
+app/controllers/users_controller.rb:8: syntax error, unexpected ')', expecting `end'
+app/controllers/users_controller.rb:18: syntax error, unexpected ')', expecting '.' or &. or :: or '['
+app/controllers/users_controller.rb:20: syntax error, unexpected constant, expecting ')'
+app/controllers/users_controller.rb:20: syntax error, unexpected ')', expecting `end'
+Started GET "/user/login/check" for 127.0.0.1 at 2023-03-23 11:07:56 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#check_login_status as */*
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms | Allocations: 229)
+
+
+  
+TypeError (no implicit conversion of Time into String):
+  
+app/controllers/application_controller.rb:28:in `session_expired?'
+Started GET "/user/login/check" for 127.0.0.1 at 2023-03-23 11:10:40 +0300
+Processing by UsersController#check_login_status as */*
+Completed 500 Internal Server Error in 1ms (Allocations: 178)
+
+
+  
+TypeError (no implicit conversion of Time into String):
+  
+app/controllers/application_controller.rb:26:in `session_expired?'
+Started GET "/user/login/check" for 127.0.0.1 at 2023-03-23 11:12:46 +0300
+Processing by UsersController#check_login_status as */*
+Filter chain halted as :session_expired? rendered or redirected
+Completed 200 OK in 1ms (Views: 0.2ms | Allocations: 317)
+
+
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateTodos (20230323082530)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "todos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar NOT NULL, "description" text NOT NULL, "status" integer DEFAULT 0 NOT NULL, "priority" integer DEFAULT 0 NOT NULL, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_d94154aa95"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_todos_on_user_id" ON "todos" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230323082530"]]
+  [1m[36mTRANSACTION (114.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/todos" for 127.0.0.1 at 2023-03-23 11:54:56 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Error occurred while parsing request parameters.
+Contents:
+
+{
+  "title": "Add Todo Endpoint",
+  "description": "Create a todo endpoint"
+  "priority": "HIGH"
+}
+Processing by TodosController#create as */*
+Filter chain halted as :session_expired? rendered or redirected
+Completed 200 OK in 26ms (Views: 1.2ms | ActiveRecord: 0.0ms | Allocations: 479)
+
+
+Started POST "/users" for 127.0.0.1 at 2023-03-23 12:02:45 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Error occurred while parsing request parameters.
+Contents:
+
+{
+  "username": "George"
+  "email": "george@gmail.com"
+  "password_digest": "1q2w"
+  
+}
+Processing by UsersController#register as */*
+Completed 400 Bad Request in 35ms (ActiveRecord: 0.0ms | Allocations: 20119)
+
+
+  
+ActionDispatch::Http::Parameters::ParseError (Error occurred while parsing request parameters):
+  
+app/controllers/users_controller.rb:38:in `user_params'
+app/controllers/users_controller.rb:5:in `register'
